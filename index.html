@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waveform Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Waveform Generator</h1>
+        <p>Upload an audio file to generate a waveform visualization</p>
+        
+        <div class="upload-section">
+            <input type="file" id="audioFile" accept=".mp3,.wav,.flac,audio/*" />
+            <label for="audioFile" class="upload-btn">Choose Audio File</label>
+            <p class="supported-formats">Supports MP3, WAV, and FLAC files</p>
+        </div>
+        
+        <div class="progress-section" id="progressSection" style="display: none;">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span id="progressText">Processing...</span>
+        </div>
+        
+        <div class="waveform-section" id="waveformSection" style="display: none;">
+            <canvas id="waveformCanvas" width="800" height="200"></canvas>
+            
+            <div class="controls">
+                <div class="customization">
+                    <div class="color-presets">
+                        <label>Quick Themes:</label>
+                        <button class="preset-btn" data-wave="#ff5500" data-bg="#f2f2f2">SoundCloud</button>
+                        <button class="preset-btn" data-wave="#1DB954" data-bg="#191414">Spotify</button>
+                        <button class="preset-btn" data-wave="#ff006e" data-bg="#000000">Neon</button>
+                        <button class="preset-btn" data-wave="#6366f1" data-bg="#f8fafc">Modern</button>
+                    </div>
+                    <label>
+                        Color: <input type="color" id="waveformColor" value="#ff5500">
+                    </label>
+                    <label>
+                        Background: <input type="color" id="backgroundColor" value="#f2f2f2">
+                    </label>
+                    <label>
+                        Width: <input type="range" id="waveformWidth" min="400" max="1240" value="800">
+                        <span id="widthValue">800px</span>
+                    </label>
+                    <label>
+                        Height: <input type="range" id="waveformHeight" min="100" max="400" value="200">
+                        <span id="heightValue">200px</span>
+                    </label>
+                </div>
+                
+                <div class="download-buttons">
+                    <button id="downloadPNG">Download PNG</button>
+                    <button id="downloadSVG">Download SVG</button>
+                    <button id="downloadJSON">Download JSON</button>
+                    <button id="downloadWAV">Download WAV</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="embed-section" id="embedSection" style="display: none;">
+            <h3>Embed Code</h3>
+            <textarea id="embedCode" readonly></textarea>
+            <button id="copyEmbed">Copy Embed Code</button>
+        </div>
+    </div>
+    
+    <script src="waveform-generator.js"></script>
+</body>
+</html>
